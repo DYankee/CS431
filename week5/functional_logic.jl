@@ -56,7 +56,7 @@ function fact_tail(n, acc=1)
     return fact_tail(n-1, n*acc)
 end
 
-n = 50000
+n = 30
 println("\n")
 println("Task 2: recursive factorial TCO vs no TCO")
 println("Recursive factorial with TCO time cost")
@@ -69,7 +69,7 @@ println("  ", fact(n))
 
 
 #######################################
-# Task 3: Tail call optimization (TCO)
+# Task 3: Recursive Data Structures
 #######################################
 mutable struct Node
     next::Union{Node, Nothing}
