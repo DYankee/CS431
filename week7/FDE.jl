@@ -1,24 +1,24 @@
-# Write a single Julia script that performs the following steps strictly using functional pipelines (no loops allowed):
-    # Filter: Remove all sensors that are NOT active.
-    # Map: Convert the temperatures from Celsius to Fahrenheit ($F = C \times \frac{9}{5} + 32$).
-    # Filter: Retain only records where the temperature is now above 70°F.
-    # Reduce: Find the Average temperature of the remaining active, high-heat sensors.
+using Statistics
 
 
 
 # Sample Data Structure to start with:
-using Statistics
 data = [
   Dict(:id=>1, :temp=>20, :active=>true),
   Dict(:id=>2, :temp=>35, :active=>false),
-  Dict(:id=>3, :temp=>25, :active=>true)
+  Dict(:id=>3, :temp=>23, :active=>true),
+  Dict(:id=>4, :temp=>27, :active=>false),
+  Dict(:id=>5, :temp=>32, :active=>true),
+  Dict(:id=>6, :temp=>34, :active=>true),
+  Dict(:id=>7, :temp=>25, :active=>false)
 ]
 
 Average_temp = data |>
     active -> filter(d -> d[:active], active) |>
-    fahrenheit -> map(t -> ((t * (9/5)) + 32), fahrenheit) |>
-    hot -> filter(d -> d[:temp] > 70, hot) |>
+    fahrenheit -> map(d -> ((d[:temp] * (9/5)) + 32), fahrenheit) |>
+    hot -> filter(d -> d > 70, hot) |>
     mean
 
+println("Average Temperature of active sensors above 70°F: ", Average_temp)
 
-println(Average_temp)
+# 
