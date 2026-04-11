@@ -1,0 +1,103 @@
+Debugging log of inform7
+inform7 was called as: /app/libexec/inform7-ide/inform7 -internal /app/share/inform7-ide -format=Inform6/32d -project /home/z-geary/code/school/CS431/week12/informProject/rocinante.inform
+Reading further switches from file: <no file>
+Completed expert settings file
+Using Inform kit 'BasicInformKit' (priority 0).
+Using Inform kit 'EnglishLanguageKit' (priority 1).
+Using Inform kit 'WorldModelKit' (priority 2).
+Using Inform kit 'CommandParserKit' (priority 3).
+756 Preform nonterminals read from /app/share/inform7-ide/Languages/English/Syntax.preform
+I've now read your source text, which is 220 words long.
+Included: core, naming, instance counting, interactive fiction, spatial model, backdrops, bibliographic data, chronology, devices, mapping, persons, player, regions, scenes, scoring, timed rules, times of day, actions, going, command, showme, multimedia, figures, sounds, glulx external files
+Excluded: 
+I've also read Basic Inform by Graham Nelson, which is 7691 words long.
+I've also read English Language by Graham Nelson, which is 2328 words long.
+I've also read Standard Rules by Graham Nelson, which is 32164 words long.
+
+
+-----------------------------------------------------
+Phase I ... Dividing source into compilation units
+-----------------------------------------------------
+
+
+
+-----------------------------------------------------
+Phase II ... Making built in infrastructure
+-----------------------------------------------------
+
+Loading kinds definitions from /app/share/inform7-ide/Inter/BasicInformKit/kinds/Macros.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/BasicInformKit/kinds/Protocols.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/BasicInformKit/kinds/Core.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/BasicInformKit/kinds/Punctuation.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/BasicInformKit/kinds/Files.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/WorldModelKit/kinds/Actions.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/WorldModelKit/kinds/Times.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/WorldModelKit/kinds/Scenes.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/WorldModelKit/kinds/Figures.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/WorldModelKit/kinds/Sounds.neptune
+Loading kinds definitions from /app/share/inform7-ide/Inter/CommandParserKit/kinds/Parsing.neptune
+
+
+-----------------------------------------------------
+Phase III ... Pre-pass through major nodes
+-----------------------------------------------------
+
+.... MajorNodes__pre_pass() took 9cs
+
+
+-----------------------------------------------------
+Phase IV ... First pass through major nodes
+-----------------------------------------------------
+
+.... MajorNodes__pass_1() took 6cs
+
+
+-----------------------------------------------------
+Phase V ... Second pass through major nodes
+-----------------------------------------------------
+
+.... MajorNodes__pass_2() took 1cs
+
+
+-----------------------------------------------------
+Phase VI ... Making the model world
+-----------------------------------------------------
+
+
+
+-----------------------------------------------------
+Phase VII ... Completing the model world
+-----------------------------------------------------
+
+
+
+-----------------------------------------------------
+Phase VIII ... Tables and grammar
+-----------------------------------------------------
+
+
+
+-----------------------------------------------------
+Phase IX ... Augment model world
+-----------------------------------------------------
+
+
+
+-----------------------------------------------------
+Phase X ... Phrases and rules
+-----------------------------------------------------
+
+Bad action pattern: jumping off the central ladder = <null-ap>
+PAP failure reason: 1
+Problem PM_APUnknown issued from inform7/assertions-module/Chapter 5/Rule Family.w, line 586
+
+  >--> You wrote 'Instead of jumping off the central ladder' (source text, line 37),
+    which seems to introduce a rule taking effect only if the action is
+    'jumping off the central ladder'. But that did not make sense as a
+    description of an action. I am unable to place this rule into any rulebook.
+
+.... ImperativeDefinitions__assess_all() took 2cs
+Compile CPU time: 23 centiseconds
+Total of 3 files written as streams.
+Vacant escapes: %: ..CDE.GH..K.M.O.QR.TU...YZab..e..h.jklm.o.qr......yz0123456789
+Vacant escapes: $: .....F...J..........UVW.....................s.u..x.........789
