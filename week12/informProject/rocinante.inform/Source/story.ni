@@ -95,7 +95,7 @@ to say fl:
 
 [custom indent]
 to say indent:
-	say "[fl]     "
+	say "[fl]      "
 
 Instead of mapping:
 	say "
@@ -103,14 +103,14 @@ Instead of mapping:
 	==================== ROCINANTE DECK PLAN ====================[line break]
 	[fl][line break]
 	[fl][indent][indent][indent][bold type]FLOOR 1[roman type][line break]
-	[fl][indent][indent] +-----------+[line break]
-	[fl][indent][indent]|   BRIDGE  |[line break]
-	[fl][indent][indent]+-----+-----+[line break]
+	[fl][indent][indent]+------------+[line break]
+	[fl][indent][indent]|   BRIDGE   |[line break]
+	[fl][indent][indent]+------------+[line break]
 	[fl][indent][line break]
 	[fl][indent][indent][bold type]FLOOR 2[roman type][line break]
-	[fl][indent][indent]+-----------+----East---+[line break]
-	[fl][indent][indent]|   ARMORY  |  AIRLOCK  |[line break]
-	[fl][indent][indent]+-----+-----+-----------+[line break]
+	[fl][indent][indent]+------------+-----East---+[line break]
+	[fl][indent][indent]|   ARMORY   |   AIRLOCK  |[line break]
+	[fl][indent][indent]+------------+------------+[line break]
 	[fl][indent][line break]
 	[fl][indent][bold type]FLOOR 3[roman type][line break]
 	[fl][indent]+---West---+-----+------+---East---+[line break]

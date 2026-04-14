@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Skein rootNode="node-0x56436d18aea0" xmlns="http://www.logicalshift.org.uk/IF/Skein">
+<Skein rootNode="node-0x5626ad892cd0" xmlns="http://www.logicalshift.org.uk/IF/Skein">
   <generator>Inform 7</generator>
-  <activeNode nodeId="node-0x56436d115d20"/>
-  <item nodeId="node-0x56436d18aea0">
+  <activeNode nodeId="node-0x5626ad892cd0"/>
+  <item nodeId="node-0x5626ad892cd0">
     <command xml:space="preserve">- start -</command>
     <result xml:space="preserve">
 
@@ -23,11 +23,11 @@ Description.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x56436bf3c2a0"/>
-      <child nodeId="node-0x56436d115d20"/>
+      <child nodeId="node-0x5626ad7e3bd0"/>
+      <child nodeId="node-0x5626ad851d20"/>
     </children>
   </item>
-  <item nodeId="node-0x56436bf3c2a0">
+  <item nodeId="node-0x5626ad7e3bd0">
     <command xml:space="preserve">go down</command>
     <result xml:space="preserve">You slide down the rungs to the deck below...
 
@@ -41,10 +41,10 @@ A secure room filled with MCRN-issue lockers. The airlock to the north leads to 
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x56436d11f2e0"/>
+      <child nodeId="node-0x5626ad83b840"/>
     </children>
   </item>
-  <item nodeId="node-0x56436d11f2e0">
+  <item nodeId="node-0x5626ad83b840">
     <command xml:space="preserve">go up</command>
     <result xml:space="preserve">You pull yourself up the rungs to the deck above...
 
@@ -60,7 +60,7 @@ You would have to get out of the Bridge first.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
   </item>
-  <item nodeId="node-0x56436d115d20">
+  <item nodeId="node-0x5626ad851d20">
     <command xml:space="preserve">map</command>
     <result xml:space="preserve"> 
  ==================== ROCINANTE DECK PLAN ====================
@@ -121,10 +121,10 @@ You would have to get out of the Bridge first.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x56436d17b570"/>
+      <child nodeId="node-0x5626ad8a0670"/>
     </children>
   </item>
-  <item nodeId="node-0x56436d17b570">
+  <item nodeId="node-0x5626ad8a0670">
     <command xml:space="preserve">mapping</command>
     <result xml:space="preserve">That&apos;s not a verb I recognise.
 
