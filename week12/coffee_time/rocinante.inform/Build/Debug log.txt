@@ -1,5 +1,5 @@
 Debugging log of inform7
-inform7 was called as: /app/libexec/inform7-ide/inform7 -internal /app/share/inform7-ide -format=Inform6/32d -project /home/z-geary/school/spring2026/CS431/week12/informProject/rocinante.inform
+inform7 was called as: /app/libexec/inform7-ide/inform7 -internal /app/share/inform7-ide -format=Inform6/32d -project /home/z-geary/code/school/CS431/week12/informProject/rocinante.inform
 Reading further switches from file: <no file>
 Completed expert settings file
 Using Inform kit 'BasicInformKit' (priority 0).
@@ -88,13 +88,14 @@ Phase X ... Phrases and rules
 -----------------------------------------------------
 
 .... ImperativeDefinitions__assess_all() took 3cs
+.... ImperativeDefinitions__assess_all() took 3cs
 
 
 -----------------------------------------------------
 Phase XI ... Generating inter (1)
 -----------------------------------------------------
 
-.... RTKindConstructors__compile() took 2cs
+.... RTKindConstructors__compile() took 3cs
 
 
 -----------------------------------------------------
