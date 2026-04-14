@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Skein rootNode="node-0x56436d18aea0" xmlns="http://www.logicalshift.org.uk/IF/Skein">
   <generator>Inform 7</generator>
-  <activeNode nodeId="node-0x56436d115d20"/>
+  <activeNode nodeId="node-0x56436d18aea0"/>
   <item nodeId="node-0x56436d18aea0">
     <command xml:space="preserve">- start -</command>
     <result xml:space="preserve">
 
 
 
-You are Jim Holden, Captain of the infamous Rocinante. You sit on the bridge, head aching and mouth tasting of sour copper. Standing with a groan you say, &quot;Alex, bridge is yours I need a coffee. Want me to grab you one?&quot; Alex replies, &quot;Copy that cap, but I&apos;ll pass on the cuppa, thanks&quot;
+You are Jim Holden, Captain of the infamous Rocinante. You sit on the bridge, head aching and mouth tasting of sour copper. Standing with a groan you say, &quot;Alex, bridge is yours I need a coffee. Want me to grab you one?&quot; Alex replies, &quot;Copy that cap, but I&apos;ll pass on the cuppa, thanks.&quot; Oh and by the way, I think the galley is running low on coffee.
+To complete the game and get captain holden his precious coffee you will need to go to the galley to use the coffee machine
 The Expanse - Coffee Time on the Rocinante
 An Interactive Fiction by Zachary Geary
 Release 1 / Serial number 260414 / Inform 7 v10.1.2 / D
 
 Bridge
-Description.
+The nerve center of the Roci. Four crash couches face their stations in a semicircle, bathed in the glow of dozens of tactical displays. Above, the curved canopy offers a view of the endless black. The air smells faintly of ozone and recycled atmosphere. Everything here speaks to the ship&apos;s Martian military heritage - efficient, deadly, and built to last.
 
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
     <played>YES</played>
-    <changed>NO</changed>
+    <changed>YES</changed>
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
@@ -65,59 +66,51 @@ You would have to get out of the Bridge first.
     <result xml:space="preserve"> 
  ==================== ROCINANTE DECK PLAN ====================
  
-                   FLOOR 1
-              +-----------+
-             |   BRIDGE  |
-             +-----+-----+
-       
-             FLOOR 2
-             +-----------+----East---+
-             |   ARMORY  |  AIRLOCK  |
-             +-----+-----+-----------+
-       
-       FLOOR 3
-       +---West---+-----+------+---East---+
-       | MED BAY  | 3RD FLOOR  |   LAB    |
-       |          |  HALLWAY   |          |
-       +----------+------------+----------+
-       
-       FLOOR 4
-       +----------+-----+------+----------+
-       | GALLEY   | 4TH FLOOR  | CAPTAIN  |
-       |          | HALLWAY    | QUARTERS |
-       +----------+-----+------+----------+
-       
-       FLOOR 5
-       +----------+-----+------+----------+
-       |   CREW   | 5TH FLOOR  |EQUIPMENT |
-       | QUARTERS | HALLWAY    |   ROOM   |
-       +----------+-----+------+----------+
-       
-       FLOOR 6
-       +------------+
-       |ENGINEERING |
-       |    SHOP    |
-       +-----+------+
-       
-       FLOOR 7
-       +------------+
-       | CARGO BAY  |
-       +-----+------+
-       
-       FLOOR 8
-       +------------+
-       |  REACTOR   |
-       |    CORE    |
-       +------------+
-       
-       ============================================================
-       Central ladder runs through floors 1-8
-       Use UP/DOWN to navigate the ladder | Use compass directions for rooms
+              +---FLOOR 1--+
+              |   BRIDGE   |
+              +------------+
+ 
+              +---FLOOR 2--+----East----+
+              |   ARMORY   |  AIRLOCK   |
+              +------------+------------+
+ 
+ +----West----+---FLOOR 3--+----East----+
+ |  MED  BAY  | 3RD  FLOOR |   LAB      |
+ |            |  HALLWAY   |            |
+ +------------+------------+------------+
+ 
+ +----West----+---FLOOR 4--+----East----+
+ |   GALLEY   | 4TH  FLOOR |  CAPTAIN   |
+ |            |  HALLWAY   |  QUARTERS  |
+ +------------+------------+------------+
+ 
+ +----West----+---Floor 5--+----East----+
+ |    CREW    | 5TH  FLOOR |  EQUIPMENT |
+ |  QUARTERS  |  HALLWAY   |    ROOM    |
+ +------------+------------+------------+
+ 
+             +----Floor 6---+
+             | ENGINEERING  |
+             |     SHOP     |
+             +--------------+
+ 
+             +----Floor 7---+
+             |  CARGO BAY   |
+             +--------------+
+ 
+             +----Floor 8---+
+             |   REACTOR    |
+             |     CORE     |
+             +--------------+
+ 
+ ============================================================
+ Central ladder runs through floors 1-8
+ Use UP/DOWN to navigate the ladder | Use compass directions for rooms
  
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
-    <changed>YES</changed>
+    <played>NO</played>
+    <changed>NO</changed>
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>

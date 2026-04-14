@@ -7,7 +7,7 @@ Using Inform kit 'EnglishLanguageKit' (priority 1).
 Using Inform kit 'WorldModelKit' (priority 2).
 Using Inform kit 'CommandParserKit' (priority 3).
 756 Preform nonterminals read from /app/share/inform7-ide/Languages/English/Syntax.preform
-I've now read your source text, which is 770 words long.
+I've now read your source text, which is 1638 words long.
 Included: core, naming, instance counting, interactive fiction, spatial model, backdrops, bibliographic data, chronology, devices, mapping, persons, player, regions, scenes, scoring, timed rules, times of day, actions, going, command, showme, multimedia, figures, sounds, glulx external files
 Excluded: 
 I've also read Basic Inform by Graham Nelson, which is 7691 words long.
@@ -42,7 +42,7 @@ Loading kinds definitions from /app/share/inform7-ide/Inter/CommandParserKit/kin
 Phase III ... Pre-pass through major nodes
 -----------------------------------------------------
 
-.... MajorNodes__pre_pass() took 9cs
+.... MajorNodes__pre_pass() took 10cs
 
 
 -----------------------------------------------------
@@ -87,7 +87,7 @@ Phase IX ... Augment model world
 Phase X ... Phrases and rules
 -----------------------------------------------------
 
-.... ImperativeDefinitions__assess_all() took 2cs
+.... ImperativeDefinitions__assess_all() took 3cs
 
 
 -----------------------------------------------------
@@ -115,8 +115,7 @@ Phase XII ... Generating inter (2)
 Phase XIII ... Generating inter (3)
 -----------------------------------------------------
 
-.... Sequence__undertake_queued_tasks() took 80cs
-.... Sequence__undertake_queued_tasks() took 1cs
+.... Sequence__undertake_queued_tasks() took 74cs
 .... RTPhrasebook__compile_entries() took 3cs
 
 
@@ -152,7 +151,7 @@ Phase XVI ... Bibliographic work
 Phase XVII ... Complete
 -----------------------------------------------------
 
-Compile CPU time: 117 centiseconds
+Compile CPU time: 111 centiseconds
 
 
 ==== Phase XVII.1 ... step 1/15: read <- *memory ====
@@ -197,7 +196,7 @@ Compile CPU time: 117 centiseconds
 
 ==== Phase XVII.11 ... step 11/15: eliminate-redundant-labels ====
 
-1759 redundant label(s) removed
+1769 redundant label(s) removed
 
 
 ==== Phase XVII.12 ... step 12/15: eliminate-redundant-operations ====
@@ -243,7 +242,7 @@ HTML tag stack:
     2. html (opened at line 236 of '/run/build/inform/inweb/foundation-module/Chapter 5/HTML.w')
 
 
-Back end elapsed time: 72cs
+Back end elapsed time: 63cs
 Total of 99 files written as streams.
 Vacant escapes: %: ..CDE.GH..K.M.O.QR.TU...YZab..e..h.jklm.o.qr......yz0123456789
 Vacant escapes: $: .....F...J..........UVW.....................s.u..x.........789
