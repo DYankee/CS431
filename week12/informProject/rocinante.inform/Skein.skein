@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Skein rootNode="node-0x55dcb9b46600" xmlns="http://www.logicalshift.org.uk/IF/Skein">
+<Skein rootNode="node-0x56436d18aea0" xmlns="http://www.logicalshift.org.uk/IF/Skein">
   <generator>Inform 7</generator>
-  <activeNode nodeId="node-0x55dcba990870"/>
-  <item nodeId="node-0x55dcb9b46600">
+  <activeNode nodeId="node-0x56436d115d20"/>
+  <item nodeId="node-0x56436d18aea0">
     <command xml:space="preserve">- start -</command>
     <result xml:space="preserve">
 
 
 
-Rocinante - Deck Layout
-An Interactive Fiction by Zack
-Release 1 / Serial number 260411 / Inform 7 v10.1.2 / D
+You are Jim Holden, Captain of the infamous Rocinante. You sit on the bridge, head aching and mouth tasting of sour copper. Standing with a groan you say, &quot;Alex, bridge is yours I need a coffee. Want me to grab you one?&quot; Alex replies, &quot;Copy that cap, but I&apos;ll pass on the cuppa, thanks&quot;
+The Expanse - Coffee Time on the Rocinante
+An Interactive Fiction by Zachary Geary
+Release 1 / Serial number 260414 / Inform 7 v10.1.2 / D
 
 Bridge
-The command center of the ship. The central ladder well begins here, dropping down into the belly of the ship.
+Description.
 
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
@@ -22,66 +23,17 @@ The command center of the ship. The central ladder well begins here, dropping do
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x55dcba282820"/>
-      <child nodeId="node-0x55dcba57fa10"/>
-      <child nodeId="node-0x55dcba6553e0"/>
+      <child nodeId="node-0x56436bf3c2a0"/>
+      <child nodeId="node-0x56436d115d20"/>
     </children>
   </item>
-  <item nodeId="node-0x55dcba282820">
-    <command xml:space="preserve">climb down</command>
-    <result xml:space="preserve">You must name something more substantial.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-  </item>
-  <item nodeId="node-0x55dcba57fa10">
+  <item nodeId="node-0x56436bf3c2a0">
     <command xml:space="preserve">go down</command>
     <result xml:space="preserve">You slide down the rungs to the deck below...
 
 Armory
 A secure room filled with MCRN-issue lockers. The airlock to the north leads to the vacuum of space.
 
-You would have to get out of the Armory first.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
-    <changed>NO</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba60dee0"/>
-      <child nodeId="node-0x55dcba77e990"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba60dee0">
-    <command xml:space="preserve">go down</command>
-    <result xml:space="preserve">You slide down the rungs to the deck below...
-
-Third floor hallway
-A narrow corridor connecting the scientific and medical wings.
-
-You would have to get out of the Third floor hallway first.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba57f700"/>
-      <child nodeId="node-0x55dcba723600"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba57f700">
-    <command xml:space="preserve">look around</command>
-    <result xml:space="preserve">You can&apos;t see any such thing.
-
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
     <played>NO</played>
@@ -89,241 +41,10 @@ You would have to get out of the Third floor hallway first.
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x55dcba2af0f0"/>
+      <child nodeId="node-0x56436d11f2e0"/>
     </children>
   </item>
-  <item nodeId="node-0x55dcba2af0f0">
-    <command xml:space="preserve">go up</command>
-    <result xml:space="preserve">You pull yourself up the rungs of the well...
-
-Armory
-A secure room filled with MCRN-issue lockers. The airlock to the north leads to the vacuum of space.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba5a7340"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba5a7340">
-    <command xml:space="preserve">go up</command>
-    <result xml:space="preserve">You pull yourself up the rungs of the well...
-
-Bridge
-The command center of the ship. The central ladder well begins here, dropping down into the belly of the ship.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba3b1630"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba3b1630">
-    <command xml:space="preserve">go up</command>
-    <result xml:space="preserve">You pull yourself up the rungs of the well...
-
-You can&apos;t go that way.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba36c6a0"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba36c6a0">
-    <command xml:space="preserve">climb up</command>
-    <result xml:space="preserve">You must name something more substantial.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba405c90"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba405c90">
-    <command xml:space="preserve">climb up ladder</command>
-    <result xml:space="preserve">You slide down the rungs to the deck below...
-
-Armory
-A secure room filled with MCRN-issue lockers. The airlock to the north leads to the vacuum of space.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba3e3620"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba3e3620">
-    <command xml:space="preserve">vlimb up</command>
-    <result xml:space="preserve">That&apos;s not a verb I recognise.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba3e04b0"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba3e04b0">
-    <command xml:space="preserve">climb up</command>
-    <result xml:space="preserve">You must name something more substantial.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba3654f0"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba3654f0">
-    <command xml:space="preserve"></command>
-    <result xml:space="preserve">I beg your pardon?
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba34b710"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba34b710">
-    <command xml:space="preserve">climb up ladder</command>
-    <result xml:space="preserve">Do you want to climb the ladder UP or DOWN?
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba3c5d40"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba3c5d40">
-    <command xml:space="preserve">up</command>
-    <result xml:space="preserve">You pull yourself up the rungs of the well...
-
-Bridge
-The command center of the ship. The central ladder well begins here, dropping down into the belly of the ship.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba2e7a50"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba2e7a50">
-    <command xml:space="preserve">ascend ladder</command>
-    <result xml:space="preserve">You&apos;re already at the top of the ladder well.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba2f0770"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba2f0770">
-    <command xml:space="preserve">climb up ladder</command>
-    <result xml:space="preserve">You slide down the rungs to the deck below...
-
-Armory
-A secure room filled with MCRN-issue lockers. The airlock to the north leads to the vacuum of space.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-  </item>
-  <item nodeId="node-0x55dcba723600">
-    <command xml:space="preserve">go down</command>
-    <result xml:space="preserve">You slide down the rungs to the deck below...
-
-Fourth floor hallway
-The lowermost section of the habitated decks.
-
-You would have to get out of the Fourth floor hallway first.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba95fa60"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba95fa60">
-    <command xml:space="preserve">go down</command>
-    <result xml:space="preserve">You&apos;re already at the bottom of the ladder well.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba990870"/>
-    </children>
-  </item>
-  <item nodeId="node-0x55dcba990870">
-    <command xml:space="preserve">go up</command>
-    <result xml:space="preserve">You pull yourself up the rungs to the deck above...
-
-Third floor hallway
-A narrow corridor connecting the scientific and medical wings.
-
-You would have to get out of the Third floor hallway first.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>YES</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
-  </item>
-  <item nodeId="node-0x55dcba77e990">
+  <item nodeId="node-0x56436d11f2e0">
     <command xml:space="preserve">go up</command>
     <result xml:space="preserve">You pull yourself up the rungs to the deck above...
 
@@ -338,43 +59,74 @@ You would have to get out of the Bridge first.
     <changed>YES</changed>
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
-    <children>
-      <child nodeId="node-0x55dcba6fc0f0"/>
-    </children>
   </item>
-  <item nodeId="node-0x55dcba6fc0f0">
-    <command xml:space="preserve">go up</command>
-    <result xml:space="preserve">You&apos;re already at the top of the ladder well.
-
+  <item nodeId="node-0x56436d115d20">
+    <command xml:space="preserve">map</command>
+    <result xml:space="preserve"> 
+ ==================== ROCINANTE DECK PLAN ====================
+ 
+                   FLOOR 1
+              +-----------+
+             |   BRIDGE  |
+             +-----+-----+
+       
+             FLOOR 2
+             +-----------+----East---+
+             |   ARMORY  |  AIRLOCK  |
+             +-----+-----+-----------+
+       
+       FLOOR 3
+       +---West---+-----+------+---East---+
+       | MED BAY  | 3RD FLOOR  |   LAB    |
+       |          |  HALLWAY   |          |
+       +----------+------------+----------+
+       
+       FLOOR 4
+       +----------+-----+------+----------+
+       | GALLEY   | 4TH FLOOR  | CAPTAIN  |
+       |          | HALLWAY    | QUARTERS |
+       +----------+-----+------+----------+
+       
+       FLOOR 5
+       +----------+-----+------+----------+
+       |   CREW   | 5TH FLOOR  |EQUIPMENT |
+       | QUARTERS | HALLWAY    |   ROOM   |
+       +----------+-----+------+----------+
+       
+       FLOOR 6
+       +------------+
+       |ENGINEERING |
+       |    SHOP    |
+       +-----+------+
+       
+       FLOOR 7
+       +------------+
+       | CARGO BAY  |
+       +-----+------+
+       
+       FLOOR 8
+       +------------+
+       |  REACTOR   |
+       |    CORE    |
+       +------------+
+       
+       ============================================================
+       Central ladder runs through floors 1-8
+       Use UP/DOWN to navigate the ladder | Use compass directions for rooms
+ 
 &gt;</result>
     <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
+    <played>YES</played>
     <changed>YES</changed>
     <temporary score="0">YES</temporary>
     <annotation xml:space="preserve"></annotation>
-  </item>
-  <item nodeId="node-0x55dcba6553e0">
-    <command xml:space="preserve">go up</command>
-    <result xml:space="preserve">You&apos;re already at the top of the ladder well.
-
-&gt;</result>
-    <commentary xml:space="preserve"></commentary>
-    <played>NO</played>
-    <changed>YES</changed>
-    <temporary score="0">YES</temporary>
-    <annotation xml:space="preserve"></annotation>
     <children>
-      <child nodeId="node-0x55dcba3749b0"/>
+      <child nodeId="node-0x56436d17b570"/>
     </children>
   </item>
-  <item nodeId="node-0x55dcba3749b0">
-    <command xml:space="preserve">go down</command>
-    <result xml:space="preserve">You slide down the rungs to the deck below...
-
-Armory
-A secure room filled with MCRN-issue lockers. The airlock to the north leads to the vacuum of space.
-
-You would have to get out of the Armory first.
+  <item nodeId="node-0x56436d17b570">
+    <command xml:space="preserve">mapping</command>
+    <result xml:space="preserve">That&apos;s not a verb I recognise.
 
 &gt;</result>
     <commentary xml:space="preserve"></commentary>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><Actions</title>
+    <title>Translating the Source</title>
     <style type="text/css">
         <!--
         /* The default font (family) and size */
@@ -870,54 +870,39 @@
 </head>
 <body>
     <!--CONTENT BEGINS-->
-    <table cellspacing="3" border="0" class="elementbanner">
-        <tr>
-            <td valign="top" align="left">
-                <div id="minibox1_1" class="smallelementbox">
-                    <a class="elementlink" title="Details" href="../Actions.html"><span class="elementtext">^</span></a><div class="elementnumber">
-                        <span class="elementnumbertext">1
-                        </span></div>
+    <!--BANNER BEGINS-->
+    <table cellspacing="3" border="0" width="100%">
+        <tr id="surround0">
+            <td style="width:100%">
+                <!--HEADING BEGINS-->
+                <div class="headingpanellayout headingpanelsucceeded">
+                    <div class="headingtext">
+                        <span class="headingpaneltext">Report on Translation: Succeeded</span></div>
+                    <div class="headingrubric">
+                        <span class="headingpanelrubric">Produced by Inform 10.1.2</span></div>
                 </div>
-
-            </td>
-            <td style="width:100%;" align="left" valign="top">
-                <p style="margin-top:0px;padding-top:0px;margin-bottom:0px;padding-bottom:0px;line-height:150%;"><b>Details</b> &mdash; 
-                A single action in detail.<br>
-                <i>About the action rulebooks&nbsp;&nbsp;<a href=inform:/doc176.html><img border=0 src=inform:/doc_images/help.png></a></i></p>
+                <!--HEADING ENDS-->
 
             </td>
         </tr>
     </table>
+    <!--BANNER ENDS-->
+    <table border="0" cellspacing="4" cellpadding="0" width=100%>
+        <tr>
+            <td align="left" valign="top" width="110">
+                <img src=inform:/outcome_images/ni_succeeded@2x.png border=1 width=100 height=100>&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td align="left" valign="top">
+                <!--HEADNOTE-->
+                <p style="margin-top:0;">(Each time <b>Go</b> or <b>Replay</b> is clicked, Inform tries to translate the source text into a working story, and updates this report.)</p>
+                <!--PROBLEMS BEGIN-->
+                <p>  The 770-word source text has successfully been translated into a world with 15 rooms and 6 things, and the index has been brought up to date.</p>
+                <!--PROBLEMS END-->
 
-    <hr>
-    <p><b>From the extension Standard Rules - Standard actions which move the actor</b><br><b>going</b>, entering&nbsp;<a href=8_A.html><img border=0 src=inform:/doc_images/Beneath.png></a>, exiting&nbsp;<a href=9_A.html><img border=0 src=inform:/doc_images/Beneath.png></a>, getting off&nbsp;<a href=10_A.html><img border=0 src=inform:/doc_images/Beneath.png></a></p>
-    <hr>
-    <p><b>Going <span class="indexdullblue">something</span> </b> (<i>past tense</i> gone): applying to one visible thing</p>
-    <p>This is the action which allows people
-    to move from one room to another, using whatever map connections and doors are
-    to hand. The Standard Rules are written so that the noun can be either a
-    direction or a door in the location of the actor: while the player's commands
-    only lead to going actions with directions as nouns, going actions can also
-    happen as a result of entering actions, and then the noun can indeed be
-    a door.</p>
-    <hr>
-    <p><b>Typed commands leading to this action</b></p>
-    <p>&quot;go&quot; - <i>going</i>&nbsp;<a href=Details/7_A.html><img border=0 src=inform:/doc_images/Beneath.png></a><br>
-    &quot;go [direction]&quot; - <i>going</i>&nbsp;<a href=Details/7_A.html><img border=0 src=inform:/doc_images/Beneath.png></a><br>
-    </p>
-    <p><b>Named values belonging to this action</b></p>
-    <p class="tightin2">room gone from - <i>room</i></p>
-    <p class="tightin2">room gone to - <i>object</i></p>
-    <p class="tightin2">door gone through - <i>object</i></p>
-    <p class="tightin2">vehicle gone by - <i>object</i></p>
-    <p class="tightin2">thing gone with - <i>object</i></p>
-    <p><b>Rules controlling this action</b></p>
-    <p><p class="indentin2">set action variables for&nbsp;&nbsp;&nbsp;&nbsp;<i>going</i>&nbsp;&nbsp;<span class="indexdullred">standard set going variables rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('standard set going variables rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The standard set going variables rule response (Setting action variables rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i></p>
-    <p class="indentin2">before&nbsp;&nbsp;&nbsp;&nbsp;<i>going down when the central ladder is in the location</i>&nbsp;&nbsp;&nbsp;<a href="source:story.ni#line61"><img border=0 src=inform:/doc_images/Reveal.png></a><br>before&nbsp;&nbsp;&nbsp;&nbsp;<i>going up when the central ladder is in the location</i>&nbsp;&nbsp;&nbsp;<a href="source:story.ni#line67"><img border=0 src=inform:/doc_images/Reveal.png></a></p>
-    <p class="indentin2">check&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going when the actor is on a supporter (called the chaise)</i>&nbsp;&nbsp;<span class="indexdullred">stand up before going rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('stand up before going rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The stand up before going rule response (check going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i><br>check&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">can't travel in what's not a vehicle rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('can[=0x0027=]t travel in what[=0x0027=]s not a vehicle rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The can[=0x0027=]t travel in what[=0x0027=]s not a vehicle rule response (check going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i><br>check&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">can't go through undescribed doors rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('can[=0x0027=]t go through undescribed doors rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The can[=0x0027=]t go through undescribed doors rule response (check going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i><br>check&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">can't go through closed doors rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('can[=0x0027=]t go through closed doors rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The can[=0x0027=]t go through closed doors rule response (check going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i><br>check&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">determine map connection rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('determine map connection rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The determine map connection rule response (check going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i><br>check&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">can't go that way rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('can[=0x0027=]t go that way rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The can[=0x0027=]t go that way rule response (check going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i></p>
-    <p class="indentin2">carry out&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">move player and vehicle rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('move player and vehicle rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The move player and vehicle rule response (carry out going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i><br>carry out&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">move floating objects rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('move floating objects rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The move floating objects rule response (carry out going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i><br>carry out&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">check light in new location rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('check light in new location rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The check light in new location rule response (carry out going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i></p>
-    <p class="indentin2">report&nbsp;&nbsp;&nbsp;&nbsp;<i>an actor going</i>&nbsp;&nbsp;<span class="indexdullred">describe room gone into rule</span>&nbsp;&nbsp;<a href="javascript:pasteCode('describe room gone into rule')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>name</i> <a href="javascript:pasteCode('The describe room gone into rule response (report going rulebook) is [=0x0022=]New text.[=0x0022=].')"><img border=0 src=inform:/doc_images/paste.png></a>&nbsp;<i>unlist</i></p>
-    </p>
+            </td>
+        </tr>
+    </table>
+    <!--FOOTNOTE-->
 
     <!--CONTENT ENDS-->
 </body>
