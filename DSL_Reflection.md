@@ -14,3 +14,6 @@ In the case of inform7 this can be seen with the spacial mapping built into the 
 
 ## Beyond the syntax
 
+When writing my program one of the big issues I ran into was with the coffee machine. The first problem was that in order to be able to add coffee grounds to the machine, I needed to make the coffee machine a container.  
+
+When writing my program one of the biggest pain points was formatting the text to be displayed. You have to be very carful with punctuation, forgetting a period or not remembering which lines need a semicolon can be a headache to debug when the parser gets confused and tries to attach part of one statement to another. Text display modifiers were also a pain to deal with. For my map action I needed to  ended using a trick I found on the inform7 forum to create short hand for the 
