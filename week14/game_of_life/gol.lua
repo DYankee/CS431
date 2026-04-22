@@ -7,7 +7,7 @@ UPDATE_RATE = .5 -- Time between updates
 
 -- Tiles
 ALIVE = "O"
-DEAD = "-"
+DEAD = "."
 
 -- Grid class
 local Grid = {}
@@ -53,6 +53,8 @@ function Grid.seed(filename, startY, startX)
 
     local curRow = startY
     for line in seedFile:lines() do
+        
+    end
 
 
 
