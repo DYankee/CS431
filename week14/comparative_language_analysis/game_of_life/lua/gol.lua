@@ -1,13 +1,13 @@
 -- Global Config
-WIDTH = 96
-HEIGHT = 96
+WIDTH = 48
+HEIGHT = 48
 FRAME_COUNT = 500
 UPDATE_RATE = .05 -- Time between updates
 DEFAULT_SEED = "../seeds/tests/default.txt"
 
 -- Tiles
-ALIVE = "\u{2687}"
-DEAD = "\u{0387}"
+ALIVE = "\u{2687}" -- ⚇
+DEAD = "\u{0387}"  -- ·
 
 
 -- Performance tracker
