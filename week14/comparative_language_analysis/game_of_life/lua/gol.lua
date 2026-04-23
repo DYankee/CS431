@@ -1,13 +1,56 @@
-
-
 -- Global Config
-WIDTH = 50
-HEIGHT = 50
-UPDATE_RATE = .5 -- Time between updates
+WIDTH = 96
+HEIGHT = 96
+FRAME_COUNT = 500
+UPDATE_RATE = .05 -- Time between updates
 
 -- Tiles
-ALIVE = "O"
-DEAD = "."
+ALIVE = "\u{2687}"
+DEAD = "\u{0387}"
+
+
+-- Performance tracker
+local Tracker = {}
+Tracker.__index = Tracker
+
+function Tracker.new(filename)
+    local self = setmetatable({}, Tracker)
+    self.frameCount = 0
+    self.totalTime = 0
+    self.totalMem = 0
+    self.filename = filename
+
+    -- Init log file
+    local file, err = io.open(self.filename, "w")
+    if file then
+        file:write("Frame,CalcTime_s,MemUsage_KB,AvgTime_s,AvgMem_KB\n")
+        file:close()
+    else
+        print("couldn't open file: " .. err)
+        os.exit(1)
+    end
+    return self
+end
+
+function Tracker:update(frameTime, frameMem)
+    self.frameCount = self.frameCount + 1
+    self.totalTime = self.totalTime + frameTime
+    self.totalMem = self.totalMem + frameMem
+    
+    local avgTime = self.totalTime / self.frameCount
+    local avgMem = self.totalMem / self.frameCount
+    
+    -- Log to file
+    local file = io.open(self.filename, "a")
+    if file then
+        file:write(string.format("%d,%.6f,%.2f,%.6f,%.2f\n", 
+            self.frameCount, frameTime, frameMem, avgTime, avgMem))
+        file:close()
+    end
+    
+    return avgTime, avgMem
+end
+
 
 -- Grid class
 local Grid = {}
@@ -32,7 +75,7 @@ function Grid.new(width, height)
 end
 
 -- clear the terminal and print the current grid state
-function Grid:display()
+function Grid:display(stats)
     -- clear the terminal
     os.execute("clear")
 
@@ -42,6 +85,16 @@ function Grid:display()
             output = output .. (self[y][x] == 1 and ALIVE or DEAD) .. " "
         end
         output = output .. "\n"
+    end
+
+    -- Append performance stats to output
+    if stats then
+        output = output .. "\n" .. string.rep("-", self.width * 2) .. "\n"
+        output = output .. string.format("FRAME: %d\n", stats.count)
+        output = output .. string.format("%-5s Current: %6.4f s  | Avg: %6.4f s\n", 
+            "TIME:", stats.currTime, stats.avgTime)
+        output = output .. string.format("%-5s Current: %6.2f KB | Avg: %6.2f KB\n", 
+            "MEM:", stats.currMem, stats.avgMem)
     end
     print(output)
 end
@@ -99,6 +152,7 @@ Simulation.__index = Simulation
 function Simulation.new(width, height)
     local self = setmetatable({}, Simulation)
     self.grid = Grid.new(width, height)
+    return self
 end
 
 -- sleep function
@@ -112,7 +166,6 @@ function Simulation:update()
     local newGrid = Grid.new(self.grid.width, self.grid.height)
 
     for y = 1, self.grid.height do
-        newGrid[y] = {}
         for x = 1, self.grid.width do
             local neighborCnt = self.grid:countNeighbors(x,y)
             local currentState = self.grid[y][x]
@@ -137,17 +190,42 @@ end
 
 
 local function main()
-    local seed = arg[1]
-
-    local simulation = Simulation.new(50,50)
-
-    simulation
-
-    grid:display()
-    sleep(2)
+    -- init simulation
+    local simulation = Simulation.new(WIDTH, HEIGHT)
     
-    grid:seed(seed, 1, 1)
-    grid:display()
+    -- Load user seed
+    local seed = arg[1] or "../seeds/testSeed.txt"
+    simulation.grid:seed(seed, 1, 1)
+    simulation.grid:display()
+    
+    -- Setup Tracker
+    local outputFile = "stats.csv"
+    if arg[2] then outputFile = arg[2] .. ".csv" end
+    local tracker = Tracker.new(outputFile)
+
+    -- simulation loop
+    for i = 1, FRAME_COUNT, 1 do
+        local startTime = os.clock()
+        simulation:update()
+        local endTime = os.clock()
+        local frameTime = endTime - startTime
+
+        local frameMem = collectgarbage("count")
+
+        local avgTime, avgMem = tracker:update(frameTime,frameMem)
+
+        local stats = {
+            count = i,
+            currTime = frameTime,
+            avgTime = avgTime,
+            currMem = frameMem,
+            avgMem = avgMem
+        }
+
+        simulation.grid:display(stats)
+
+        simulation:sleep(UPDATE_RATE)
+    end
 
 end
 
