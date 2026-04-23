@@ -3,6 +3,7 @@ WIDTH = 96
 HEIGHT = 96
 FRAME_COUNT = 500
 UPDATE_RATE = .05 -- Time between updates
+DEFAULT_SEED = "../seeds/tests/default.txt"
 
 -- Tiles
 ALIVE = "\u{2687}"
@@ -192,15 +193,20 @@ end
 local function main()
     -- init simulation
     local simulation = Simulation.new(WIDTH, HEIGHT)
-    
+
     -- Load user seed
-    local seed = arg[1] or "../seeds/testSeed.txt"
+    local seed = arg[1] or DEFAULT_SEED
     simulation.grid:seed(seed, 1, 1)
     simulation.grid:display()
-    
+
     -- Setup Tracker
-    local outputFile = "stats.csv"
-    if arg[2] then outputFile = arg[2] .. ".csv" end
+    -- regex to get the seed name from the filename
+    local baseName = seed:match("([^/\\]+)%.[^.]+$") or seed:match("([^/\\]+)$") or "seed"
+    local outputFile = string.format("lua_%dx%d_%s.csv",
+        simulation.grid.width,
+        simulation.grid.height,
+        baseName
+    )
     local tracker = Tracker.new(outputFile)
 
     -- simulation loop
