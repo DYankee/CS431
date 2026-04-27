@@ -1,9 +1,9 @@
 -- Global Config
-WIDTH = 48
-HEIGHT = 48
-FRAME_COUNT = 500
-UPDATE_RATE = .05 -- Time between updates
-DEFAULT_SEED = "../seeds/tests/default.txt"
+WIDTH = 24
+HEIGHT = 24
+FRAME_COUNT = 250
+UPDATE_RATE = .1 -- Time between updates
+DEFAULT_SEED = "../seeds/default.txt"
 
 -- Tiles
 ALIVE = "\u{2687}" -- ⚇
@@ -44,7 +44,7 @@ function Tracker:update(frameTime, frameMem)
     -- Log to file
     local file = io.open(self.filename, "a")
     if file then
-        file:write(string.format("%d,%.6f,%.2f,%.6f,%.2f\n", 
+        file:write(string.format("%d,%.4f,%.2f,%.4f,%.2f\n", 
             self.frameCount, frameTime, frameMem, avgTime, avgMem))
         file:close()
     end
@@ -58,17 +58,17 @@ local Grid = {}
 Grid.__index = Grid
 
 -- Constructor
-function Grid.new(width, height)
+function Grid.new(h, w)
     local self = setmetatable({}, Grid)
 
     -- Assign variables
-    self.width = width
-    self.height = height
+    self.h = h
+    self.w = w
 
     -- Build empty grid
-    for y = 1, self.height do
+    for y = 1, self.h do
         self[y] = {}
-        for x = 1, self.width do
+        for x = 1, self.w do
             self[y][x] = 0
         end
     end
@@ -81,8 +81,8 @@ function Grid:display(stats)
     os.execute("clear")
 
     local output = ""
-    for y = 1, self.height do
-        for x = 1, self.width do
+    for y = 1, self.h do
+        for x = 1, self.w do
             output = output .. (self[y][x] == 1 and ALIVE or DEAD) .. " "
         end
         output = output .. "\n"
@@ -90,7 +90,7 @@ function Grid:display(stats)
 
     -- Append performance stats to output
     if stats then
-        output = output .. "\n" .. string.rep("-", self.width * 2) .. "\n"
+        output = output .. "\n" .. string.rep("-", self.w * 2) .. "\n"
         output = output .. string.format("FRAME: %d\n", stats.count)
         output = output .. string.format("%-5s Current: %6.4f s  | Avg: %6.4f s\n", 
             "TIME:", stats.currTime, stats.avgTime)
@@ -101,28 +101,41 @@ function Grid:display(stats)
 end
 
 -- Seed
-function Grid:seed(filename, startY, startX)
+function Grid:seed(filename)
     local seedFile = io.open(filename, "r")
     if not seedFile then
         print("Could not open file: " .. filename)
         return false
     end
 
-    local curRow = startY
+    -- Read file to get the width and height of the seed
+    local lines = {}
+    local seedWidth = 0
     for line in seedFile:lines() do
+        table.insert(lines, line)
+        if #line > seedWidth then
+            seedWidth = #line
+        end
+    end
+    seedFile:close()
+
+    local seedHeight = #lines
+
+    -- Calculate centered position
+    local startY = math.floor((self.h - seedHeight) / 2) + 1
+    local startX = math.floor((self.w - seedWidth) / 2) + 1
+
+    for rowIdx, line in ipairs(lines) do
+        local curRow = startY + rowIdx - 1
         -- Make sure we don't leave the grid
-        if curRow <= self.height then
+        if curRow >= 1 and curRow <= self.h then
             for i = 1, #line do
                 local char = line:sub(i,i)
                 local currentCol = startX + i - 1
 
                 -- Make sure we don't leave the grid
-                if currentCol <= self.width then
-                    if char == "1" then
-                        self[curRow][currentCol] = 1
-                    else
-                        self[curRow][currentCol] = 0
-                    end
+                if currentCol >= 1 and currentCol <= self.w then
+                    self[curRow][currentCol] = (char == "1") and 1 or 0
                 end
             end
             curRow = curRow + 1
@@ -131,13 +144,13 @@ function Grid:seed(filename, startY, startX)
 end
 
 -- Count how many cells a neighbor has
-function Grid:countNeighbors(x,y)
+function Grid:countNeighbors(y,x)
     local count = 0
     for dy = -1, 1 do
         for dx = -1, 1 do
             if not (dx == 0 and dy == 0) then
-                local ny = (y + dy - 1) % self.height + 1
-                local nx = (x + dx - 1) % self.width + 1
+                local ny = (y + dy - 1) % self.h + 1
+                local nx = (x + dx - 1) % self.w + 1
                 count = count + self[ny][nx]
             end
         end
@@ -150,9 +163,9 @@ local Simulation = {}
 Simulation.__index = Simulation
 
 -- constructor
-function Simulation.new(width, height)
+function Simulation.new(h,w)
     local self = setmetatable({}, Simulation)
-    self.grid = Grid.new(width, height)
+    self.grid = Grid.new(h,w)
     return self
 end
 
@@ -164,11 +177,11 @@ function Simulation:sleep(n)
 end
 
 function Simulation:update()
-    local newGrid = Grid.new(self.grid.width, self.grid.height)
+    local newGrid = Grid.new(self.grid.h, self.grid.w)
 
-    for y = 1, self.grid.height do
-        for x = 1, self.grid.width do
-            local neighborCnt = self.grid:countNeighbors(x,y)
+    for y = 1, self.grid.h do
+        for x = 1, self.grid.w do
+            local neighborCnt = self.grid:countNeighbors(y,x)
             local currentState = self.grid[y][x]
 
             if currentState == 1 then
@@ -192,21 +205,20 @@ end
 
 local function main()
     -- init simulation
-    local simulation = Simulation.new(WIDTH, HEIGHT)
+    local height = tonumber(arg[2]) or HEIGHT
+    local width = tonumber(arg[3]) or WIDTH
+
+    local simulation = Simulation.new(height, width)
 
     -- Load user seed
     local seed = arg[1] or DEFAULT_SEED
-    simulation.grid:seed(seed, 1, 1)
+    simulation.grid:seed(seed)
     simulation.grid:display()
 
     -- Setup Tracker
     -- regex to get the seed name from the filename
     local baseName = seed:match("([^/\\]+)%.[^.]+$") or seed:match("([^/\\]+)$") or "seed"
-    local outputFile = string.format("lua_%dx%d_%s.csv",
-        simulation.grid.width,
-        simulation.grid.height,
-        baseName
-    )
+    local outputFile = string.format("lua_%s.csv", baseName)
     local tracker = Tracker.new(outputFile)
 
     -- simulation loop
