@@ -78,7 +78,7 @@ end
 -- clear the terminal and print the current grid state
 function Grid:display(stats)
     -- clear the terminal
-    os.execute("clear")
+    io.write("\27[H\27[2J")
 
     local output = ""
     for y = 1, self.h do

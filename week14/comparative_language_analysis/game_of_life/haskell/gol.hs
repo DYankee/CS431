@@ -9,12 +9,15 @@ import System.CPUTime
 import System.Environment (getArgs)
 import System.IO
 import Text.Printf
+import Control.DeepSeq (force)
+import Control.Exception (evaluate)
+import GHC.Stats
 
 -- --- Global Config ---
 defaultWidth, defaultHeight, frameCount :: Int
 defaultWidth = 24
 defaultHeight = 24
-frameCount = 250
+frameCount = 1000
 
 updateRate :: Int
 updateRate = 100000 -- Microseconds (0.1s)
@@ -29,7 +32,7 @@ deadChar  = '\x0387' -- ·
 
 -- --- Types ---
 
--- We use an Array (row, col) for O(1) access
+
 type Grid = Array (Int, Int) Int
 
 data PerformanceStats = PerformanceStats
@@ -41,6 +44,8 @@ data PerformanceStats = PerformanceStats
     }
 
 -- --- Logic ---
+
+
 
 -- Creates a blank grid initialized to 0
 createGrid :: Int -> Int -> Grid
@@ -117,6 +122,7 @@ displayGrid grid PerformanceStats{..} = do
     -- Note: Real-time memory monitoring in Haskell usually requires the +RTS -s flags
     -- We will display placeholders to match your template format
     printf "MEM:  Current: %6.2f KB | Avg: %6.2f KB\n" currMem avgMem
+    hFlush stdout
 
 intersperse :: a -> [a] -> [a]
 intersperse _ [] = []
@@ -130,10 +136,23 @@ logPerformance filename PerformanceStats{..} = do
     appendFile filename $ 
         printf "%d,%.4f,%.2f,%.4f,%.2f\n" count currTime currMem avgTime avgMem
 
+getMemoryUsage :: IO Double
+getMemoryUsage = do
+    enabled <- getRTSStatsEnabled
+    if enabled
+        then do
+            stats <- getRTSStats
+            -- Returns current bytes used in the heap converted to KB
+            return $ fromIntegral (gcdetails_live_bytes $ gc stats) / 1024.0
+        else return 0.0
+
 -- --- Main Loop ---
 
 main :: IO ()
 main = do
+    -- Enable block buffering
+    hSetBuffering stdout (BlockBuffering (Just 4096))
+
     args <- getArgs
     let seedFile = if not (null args) then head args else defaultSeed
         width    = if length args >= 2 then read (args !! 1) else defaultWidth
@@ -153,20 +172,20 @@ main = do
                     start <- getCPUTime
                     
                     -- Pure calculation
-                    let nextGrid = updateGrid currentGrid
-                    
-                    -- Force evaluation (Haskell is lazy, so we must force the grid)
-                    _ <- return $! (nextGrid ! (1,1)) 
+                    nextGrid <- evaluate $ force (updateGrid currentGrid)
                     
                     end <- getCPUTime
+
+                    mem <- getMemoryUsage
+
                     let diff = fromIntegral (end - start) / (10^12) -- Convert picoseconds to seconds
                         newStats = stats 
                             { count = count stats + 1
                             , currTime = diff
                             , totalTime = totalTime stats + diff
                             -- Dummy memory stats (requires GHC.Stats for real values)
-                            , currMem = 0.0
-                            , totalMem = 0.0
+                            , currMem = mem
+                            , totalMem = totalMem stats + mem
                             }
 
                     displayGrid nextGrid newStats
