@@ -1,11 +1,21 @@
 using Printf
 using Statistics
 
+###############################################################################
+# Conway's game of life implemented in Lua. 
+# Simulation settings can be adjusted below in the global configurations
+
+# optional Args:
+#      1. seedFile     - Path to a file containing a starting seed
+#      2. height       - height of the simulation
+#      3. width        - Width of the simulation
+###############################################################################
+
 # --- Global Config ---
 const WIDTH = 24
 const HEIGHT = 24
-const FRAME_COUNT = 250
-const UPDATE_RATE = 0.1 # Seconds
+const FRAME_COUNT = 300
+const UPDATE_RATE = 0.1 # Time between updates in seconds
 const DEFAULT_SEED = "../seeds/default.txt"
 
 # Tiles (Unicode strings)
@@ -38,7 +48,7 @@ function update_tracker!(tracker::PerformanceTracker, frame_time::Float64, frame
 
     # Append to log file
     open(tracker.filename, "a") do io
-        @printf(io, "%d,%.4f,%.2f,%.4f,%.2f\n", 
+        @printf(io, "%d,%8.6f,%8.2f,%8.6f,%8.2f\n", 
                 tracker.frame_count, frame_time, frame_mem, avg_time, avg_mem)
     end
 
@@ -110,8 +120,8 @@ function display_grid(grid::Matrix{Int8}, stats::Union{NamedTuple, Nothing}=noth
     if stats !== nothing
         println(output, "\n", "-" ^ (w * 2))
         @printf(output, "FRAME: %d\n", stats.count)
-        @printf(output, "%-5s Current: %6.4f s  | Avg: %6.4f s\n", "TIME:", stats.currTime, stats.avgTime)
-        @printf(output, "%-5s Current: %6.2f KB | Avg: %6.2f KB\n", "MEM:", stats.currMem, stats.avgMem)
+        @printf(output, "%-5s Current: %8.6f s  | Avg: %8.6f s\n", "TIME:", stats.currTime, stats.avgTime)
+        @printf(output, "%-5s Current: %8.2f KB | Avg: %8.2f KB\n", "MEM:", stats.currMem, stats.avgMem)
     end
 
     print(String(take!(output)))
@@ -123,7 +133,6 @@ function update_grid(grid::Matrix{Int8})
     h, w = size(grid)
     
     # Using a functional map construction to create the new grid
-    # CartesianIndices allows us to iterate over coordinates functionally
     return [
         begin
             n = count_neighbors(grid, idx[1], idx[2])
@@ -151,7 +160,7 @@ function main()
 
     # Determine filename for CSV
     base_name = splitext(basename(seed_file))[1]
-    output_file = "julia_$(base_name).csv"
+    output_file = "julia_$(base_name)_test.csv"
     tracker = PerformanceTracker(output_file)
 
     for i in 1:FRAME_COUNT

@@ -1,26 +1,48 @@
 {-# LANGUAGE RecordWildCards #-}
-
 import Control.Concurrent (threadDelay)
 import Control.Monad (forM_)
 import Data.Array
+    ( Ix(range), (!), (//), array, bounds, listArray, Array )
 import Data.List (maximumBy)
 import Data.Ord (comparing)
-import System.CPUTime
+import System.CPUTime ( getCPUTime )
 import System.Environment (getArgs)
 import System.IO
-import Text.Printf
+    ( hFlush, hSetBuffering, stdout, BufferMode(BlockBuffering) )
+import Text.Printf ( printf )
 import Control.DeepSeq (force)
 import Control.Exception (evaluate)
 import GHC.Stats
+    ( getRTSStats,
+      getRTSStatsEnabled,
+      GCDetails(gcdetails_live_bytes),
+      RTSStats(gc) )
+import System.Mem (performGC)
+import System.FilePath (takeBaseName)
+
+-------------------------------------------------------------------------------
+-- Conway's game of life implemented in Haskell. 
+-- Simulation settings can be adjusted below in the global configurations
+
+-- optional Args:
+--      1. seedFile     - Path to a file containing a starting seed
+--      2. height       - height of the simulation
+--      3. width        - Width of the simulation
+
+-- Compilation instructions:
+--      ghc -threaded -O2 gol.hs -o gol -rtsopts
+-- For performance tracking add +RTS -T to the end of flags
+-------------------------------------------------------------------------------
+
 
 -- --- Global Config ---
 defaultWidth, defaultHeight, frameCount :: Int
 defaultWidth = 24
 defaultHeight = 24
-frameCount = 1000
+frameCount = 300
 
 updateRate :: Int
-updateRate = 100000 -- Microseconds (0.1s)
+updateRate = 100000 -- Time between updates in microseconds (100,000ms = 0.1s)
 
 defaultSeed :: String
 defaultSeed = "../seeds/default.txt"
@@ -104,7 +126,7 @@ loadSeed path h w = do
 -- --- UI & Performance ---
 
 displayGrid :: Grid -> PerformanceStats -> IO ()
-displayGrid grid PerformanceStats{..} = do
+displayGrid grid PerformanceStats {..} = do
     -- ANSI Clear Screen and Reset Cursor
     putStr "\ESC[2J\ESC[H"
     let ((minY, minX), (maxY, maxX)) = bounds grid
@@ -118,10 +140,8 @@ displayGrid grid PerformanceStats{..} = do
 
     putStrLn $ replicate (maxX * 2) '-'
     printf "FRAME: %d\n" count
-    printf "TIME: Current: %6.4f s  | Avg: %6.4f s\n" currTime avgTime
-    -- Note: Real-time memory monitoring in Haskell usually requires the +RTS -s flags
-    -- We will display placeholders to match your template format
-    printf "MEM:  Current: %6.2f KB | Avg: %6.2f KB\n" currMem avgMem
+    printf "TIME: Current: %8.6f s  | Avg: %8.6f s\n" currTime avgTime
+    printf "MEM:  Current: %8.4f KB | Avg: %8.4f KB\n" currMem avgMem
     hFlush stdout
 
 intersperse :: a -> [a] -> [a]
@@ -134,13 +154,14 @@ logPerformance filename PerformanceStats{..} = do
     let avgTime = totalTime / fromIntegral count
         avgMem  = totalMem / fromIntegral count
     appendFile filename $ 
-        printf "%d,%.4f,%.2f,%.4f,%.2f\n" count currTime currMem avgTime avgMem
+        printf "%d,%8.6f,%8.4f,%8.6f,%8.4f\n" count currTime currMem avgTime avgMem
 
 getMemoryUsage :: IO Double
 getMemoryUsage = do
     enabled <- getRTSStatsEnabled
     if enabled
         then do
+            performGC
             stats <- getRTSStats
             -- Returns current bytes used in the heap converted to KB
             return $ fromIntegral (gcdetails_live_bytes $ gc stats) / 1024.0
@@ -161,10 +182,9 @@ main = do
     grid <- loadSeed seedFile height width
     
     -- Prepare CSV log
-    let baseName = "seed" -- Simplified for example
+    let baseName = takeBaseName seedFile
         logFile = "haskell_" ++ baseName ++ ".csv"
     writeFile logFile "Frame,CalcTime_s,MemUsage_KB,AvgTime_s,AvgMem_KB\n"
-
     let loop currentGrid stats = do
             if count stats >= frameCount
                 then putStrLn "Simulation Complete."

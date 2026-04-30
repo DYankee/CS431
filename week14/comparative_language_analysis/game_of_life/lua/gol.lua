@@ -1,8 +1,18 @@
+-------------------------------------------------------------------------------
+-- Conway's game of life implemented in Lua. 
+-- Simulation settings can be adjusted below in the global configurations
+
+-- optional Args:
+--      1. seedFile     - Path to a file containing a starting seed
+--      2. height       - height of the simulation
+--      3. width        - Width of the simulation
+-------------------------------------------------------------------------------
+
 -- Global Config
 WIDTH = 24
 HEIGHT = 24
-FRAME_COUNT = 250
-UPDATE_RATE = .1 -- Time between updates
+FRAME_COUNT = 300
+UPDATE_RATE = .1 -- Time between updates in seconds
 DEFAULT_SEED = "../seeds/default.txt"
 
 -- Tiles
@@ -44,7 +54,7 @@ function Tracker:update(frameTime, frameMem)
     -- Log to file
     local file = io.open(self.filename, "a")
     if file then
-        file:write(string.format("%d,%.4f,%.2f,%.4f,%.2f\n", 
+        file:write(string.format("%d,%8.6f,%8.4f,%8.6f,%8.4f\n", 
             self.frameCount, frameTime, frameMem, avgTime, avgMem))
         file:close()
     end
@@ -77,7 +87,7 @@ end
 
 -- clear the terminal and print the current grid state
 function Grid:display(stats)
-    -- clear the terminal
+    -- Clear terminal using ANSI escape codes
     io.write("\27[H\27[2J")
 
     local output = ""
@@ -92,9 +102,9 @@ function Grid:display(stats)
     if stats then
         output = output .. "\n" .. string.rep("-", self.w * 2) .. "\n"
         output = output .. string.format("FRAME: %d\n", stats.count)
-        output = output .. string.format("%-5s Current: %6.4f s  | Avg: %6.4f s\n", 
+        output = output .. string.format("%-5s Current: %8.6f s  | Avg: %8.6f s\n", 
             "TIME:", stats.currTime, stats.avgTime)
-        output = output .. string.format("%-5s Current: %6.2f KB | Avg: %6.2f KB\n", 
+        output = output .. string.format("%-5s Current: %8.4f KB | Avg: %8.4f KB\n", 
             "MEM:", stats.currMem, stats.avgMem)
     end
     print(output)
