@@ -42,7 +42,7 @@ julia gol ../seeds/tests/12x12testseed.txt 12 12
 
 1. Ensure you have the latest version of the haskell compiler installed
 2. Navigate to the haskell subfolder in the project
-3. Run the following command to compile the program: ```ghc -threaded -O2 gol.hs -o gol -rtsoptsjulia gol.jl```
+3. Run the following command to compile the program: ```ghc -threaded -O2 gol.hs -o gol -rtsopts```
 4. Then you can run the program with the command: ```./gol +RTS -T```
 
 Optional args:

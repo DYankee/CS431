@@ -76,4 +76,4 @@ While I want to like the language and think the idea of pure functions is cool i
 
 ## Final Recommendation
 
-After working with all three languages and analyzing their performance I would recommend julia as the right tool for the job. It has the best average frame time for all grid sizes and while it also has the greatest memory usage by a large margin. In our use case (Cell Automata), Frame time and developer velocity are more important than trying to be as efficient as possible with our memory.  
+After working with all three languages and analyzing their performance I would recommend julia as the right tool for the job. It has the best average frame time for all grid sizes and while it also has the greatest memory usage by a large margin. In our use case (Cell Automata), Frame time and developer velocity are more important than trying to be as efficient as possible with our memory.
